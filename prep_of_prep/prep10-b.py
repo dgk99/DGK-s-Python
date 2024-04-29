@@ -22,4 +22,4 @@ elif index == 3 :
 elif index == 4 :
     menus == "버거"
     
-print(f"선택된 메뉴: {menus[index]}")
+print(f"선택된 메뉴: {menus[ind]}")
