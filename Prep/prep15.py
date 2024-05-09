@@ -29,24 +29,22 @@ while True :
     # 유저입력값과 pc랜덤값이 같을 경우, 무승부를 출력하고 user_draw_count에 +1
     if (userinput == "가위" and pc_choice == "가위") or (userinput == "바위" and pc_choice == "바위") or (userinput == "보" and pc_choice == "보") :
         user_draw_count += 1
-        print(f"무승부! 현재 전적: {user_win_count}승 {user_lose_count}패 {user_draw_count}무")
-        print()
+        print(f"무승부! 현재 전적: {user_win_count}승 {user_lose_count}패 {user_draw_count}무\n")
+        
         
     # 유저입력값이 pc랜덤값을 이길 경우, 승리를 출력하고 user_win_count에 +1
     elif (userinput == "가위" and pc_choice == "보") or (userinput == "바위" and pc_choice == "가위") or (userinput == "보" and pc_choice == "바위") :
         user_win_count += 1
-        print(f"승리! 현재 전적: {user_win_count}승 {user_lose_count}패 {user_draw_count}무")
-        print()
+        print(f"승리! 현재 전적: {user_win_count}승 {user_lose_count}패 {user_draw_count}무\n")
+        
         
     # 유저입력값이 pc랜덤값에 질 경우, 패배를 출력하고 user_lose_count에 +1
     elif (userinput == "가위" and pc_choice == "바위") or (userinput == "바위" and pc_choice == "보") or (userinput == "보" and pc_choice == "가위") :
         user_lose_count += 1
-        print(f"승리! 현재 전적: {user_win_count}승 {user_lose_count}패 {user_draw_count}무")
-        print()
+        print(f"패배ㅠㅠ 현재 전적: {user_win_count}승 {user_lose_count}패 {user_draw_count}무\n")
+        
 
 # 게임이 종료되면 전체 승 패 무의 결과와 최종 승자 출력
-
-
     if user_win_count == 2 or user_lose_count == 2 :
         break
 
