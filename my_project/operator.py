@@ -57,8 +57,8 @@
 #                            # 명시적 형변환
 # input_int = int(input_srt) # input_str: str -> integer by using int() function
 
-for value in range(1, 11):
-    print(value + "번째 값")
+# for value in range(1, 11):
+#     print(value + "번째 값")
 # 이 코드가 오류가 나는 이유는?
 # value의 자료형은 int, "번째 값"의 자료형은 str이다.
 # 그러므로 int + str은 이루어질 수 없기에 error가 일어난다.
@@ -66,7 +66,7 @@ for value in range(1, 11):
 # 명시적 형변환으로 인해 str(value)로 바꿔주면 1번째 값, 2번째 값...인 원하는 값이 출력된다.
 
 
-bar = (2.0 + 3) * 4
+# bar = (2.0 + 3) * 4
 
 # 2.0 + 3 -> 2.0 + float(3)
 # 5.0 * 4 -> 5.0 * float(4)
