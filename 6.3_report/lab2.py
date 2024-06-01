@@ -12,9 +12,9 @@
 sum = 0
 # while은 반복의 횟수가 정해져 있지 않을 때 사용
 flag = True
-while flag :
-    for num in range(1, 1001) :
-        if num % 3 == 0 :
+while flag : # flag가 False가 될 때 까지 실행
+    for num in range(1, 1001) : # 1부터 1000까지의 수 생성
+        if num % 3 == 0 : # 수가
             sum += num
         flag = False
     print(sum)

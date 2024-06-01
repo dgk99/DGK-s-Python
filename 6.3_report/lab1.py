@@ -2,15 +2,13 @@
 
 # while문을 사용하여 아래와 같이 출력하는 프로그램 작성
 
-# 세로 별 카운트 지정
-star_length_count = 0
-star_width_count = 0
-# 세로 별 카운트가 5보다 적으면 별을 출력하다가, 그 이상이면 종료
-while star_length_count <= 5 : 
-    star = ""
-    star_length_count +=1
-    # 가로 별 카운트가 4보다 작을때는 별을 출력하다가, 그 이상이면 종료
-    while star_width_count <= 4 :
-        star += "*"
-        print(star)
-        star_width_count += 1
+# 별 카운트
+star_count = 0
+
+star = ""
+# 별 카운트가 4보다 적거나 같을 때 까지 실행하다가, 4와 같거나 4보다 크면 실행 종료
+while star_count <= 4 :
+    # 반복문이 실행될 때 마다 star에다가 * 추가
+    star += "*"
+    print(star)
+    star_count += 1
