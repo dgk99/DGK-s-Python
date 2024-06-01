@@ -16,6 +16,7 @@ for num in range(1, 101) :
 
 # 1부터 100이 있는 리스트에서 랜덤으로 숫자 하나 빼오기
 random_num = random.choice(num_list)
+print(random_num)
 
 # 사용자의 기회 카운트
 user_count = 0
@@ -24,6 +25,10 @@ while True :
     inputValue = int(input(f"기회{user_count}/10 - 1부터 100 사이의 숫자를 맞춰보세요 (종료하려면 0 입력): "))
     
     if inputValue == 0 :
+        break
+    
+    if user_count == 10 and inputValue == random_num :
+        print("정답입니다!")
         break
     
     elif user_count == 10 :
