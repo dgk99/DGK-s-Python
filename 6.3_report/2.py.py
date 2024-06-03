@@ -17,4 +17,4 @@ while flag : # flag가 False가 될 때 까지 실행
         if num % 3 == 0 : # 수가
             sum += num
         flag = False
-    print(sum)
+    print(f"1~1000 사이 정수 중 3의 배수의 총 합은 : {sum}")

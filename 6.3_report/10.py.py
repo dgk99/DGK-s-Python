@@ -16,7 +16,6 @@ for num in range(1, 101) :
 
 # 1부터 100이 있는 리스트에서 랜덤으로 숫자 하나 빼오기
 random_num = random.choice(num_list)
-print(random_num)
 
 # 사용자의 기회 카운트
 user_count = 0
