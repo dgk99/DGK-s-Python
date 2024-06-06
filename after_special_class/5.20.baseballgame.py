@@ -32,7 +32,7 @@ def getRandList(argNumRandValues, argStartValue, argEndValue):
             
     return random_list
             
-com_random_list = getRandList(3, 1, 3)
+com_random_list = getRandList(3, 0, 9)
 
 print("컴퓨터 랜덤 값: ", com_random_list)
 
