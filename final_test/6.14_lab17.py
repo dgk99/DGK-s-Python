@@ -56,7 +56,7 @@ while True:
     
     # blind 해제
     # 입력받은 알파벳이 단어 내에 존재할 경우 blind 해제
-    if user_input in word_printed:
+    if user_input in word_random:
         for i in index_list:
             if user_input == word_random[i]:
                 word_printed[i] = user_input

@@ -16,9 +16,9 @@ while count < 3:
     for num in range(count):
         if random_num == com_list[num]:
             break
-    else:
-        com_list.append(random_num)
-        count += 1
+
+    com_list.append(random_num)
+    count += 1
 print(com_list)
 
 # 시도 횟수 카운트, 아웃 카운트 생성
