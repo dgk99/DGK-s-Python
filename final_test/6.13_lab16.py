@@ -9,7 +9,7 @@ count = 0
 # 3개의 값이 들어올 때 까지 반복하기 위해 while문에 조건문 넣어 사용
 while count < 3:
     # 게임 시작 시 0-9 사이의 중복되지 않은 정수 3개를 생성합니다.
-    random_num = random.randint(0, 2)
+    random_num = random.randint(0, 9)
     
     # 중복값 검사
     for num in range(count):
@@ -19,7 +19,7 @@ while count < 3:
 
     com_list.append(random_num)
     count += 1
-print(com_list)
+# print(com_list)
 
 # 시도 횟수 카운트
 game_count = 1
