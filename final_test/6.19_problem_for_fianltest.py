@@ -5,15 +5,15 @@ import random
 def mutliple(arg_dan1, arg_dan2 = None):
     if arg_dan2 == None:
         arg_dan2 = arg_dan1
-        for arg_dan1 in range(arg_dan1, arg_dan2 + 1):
-            for num in range(1, 10):
-                print(f"{arg_dan1} * {num} = {arg_dan1 * num}")
-            print()
-    else:
-        for arg_dan1 in range(arg_dan1, arg_dan2 + 1):
-            for num in range(1, 10):
-                print(f"{arg_dan1} * {num} = {arg_dan1 * num}")
-            print()
+    for arg_dan1 in range(arg_dan1, arg_dan2 + 1):
+        for num in range(1, 10):
+            print(f"{arg_dan1} * {num} = {arg_dan1 * num}")
+        print()
+    # else:
+    #     for arg_dan1 in range(arg_dan1, arg_dan2 + 1):
+    #         for num in range(1, 10):
+    #             print(f"{arg_dan1} * {num} = {arg_dan1 * num}")
+    #         print()
             
 
 # 삼각형
@@ -50,7 +50,7 @@ while True:
             dan_input = dan_input.split("~")
             dan_input[0] = int(dan_input[0])
             if len(dan_input) == 1:
-                if dan_input[0] > 9 or dan_input[0] < 2:
+                if 2 > dan_input[0] or dan_input[0] > 9 :
                     print("2~9 사이의 값으로 입력하세요")
                 else:
                     mutliple(dan_input[0])
@@ -84,13 +84,12 @@ while True:
         break
     else:
         print("1~3 사이의 값을 입력하세요")
-        continue
 
 # 입력 형태에 따라 한 단만 또는 지정된 범위의 구구단을 출력
 # 입력 값이 2~9 범위를 벗어날 경우 에러 메시지를 출력하고 재입력을 요구
 
 
-    
+
 
 # 랜덤값 삼각형 출력
 # 사용자로부터 삼각형의 높이(2~3줄)를 입력 받음
