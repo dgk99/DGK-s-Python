@@ -23,6 +23,7 @@ for i in sentence:
     elif i == ' ' or i == "\n":
         word_list.append(word)
         word = ""
+    # 줄 수를 세기 위한 조건문
     if i == "\n":
         line_count += 1
 word_list.append(word)
@@ -32,8 +33,6 @@ for i in word_list_index:
     if word_list[i] == '':
         del word_list[i]
         break
-
-
 
 # 문자열 카운트
 word_count = 0
@@ -53,7 +52,9 @@ while True:
     
     #  검색된 문자열에 대한 정보를 출력
     # » 검색된 문자열의 개수
+    number_word = 0
     for i in word_list:
+        number_word += 1
         if i == user_input:
             word_count += 1
     print(f"검색된 문자열의 개수: {word_count}")
@@ -65,6 +66,8 @@ while True:
     sentence = list(sentence)
     sentence_index = [int(value) for value in range(len(sentence))]
     save_list = []
+    # 문자열의 위치를 찾는 조건문
+    # 트리거가 True면 문자를 찾고 False면 빈칸
     trigger = True
     for i in sentence_index:
         if trigger == True:
@@ -74,10 +77,12 @@ while True:
         if trigger == False:
             if sentence[i] == " ":
                 trigger = True
+                
+                
     print(f"검색된 문자열의 위치: {save_list}")
     #  전체 문장에 대한 정보를 출력
     # » 단어의 개수 (단어는 띄어쓰기로 구분)
-    print(f"단어의 개수: {len(word_list)}")
+    print(f"단어의 개수: {number_word}")
     # » 전체 문자 수(공백과 개행 문자를 제외한 글자 수)
     print(f"전체 문자 수: {total_word}")
     # » 줄 수 (The number of lines)
