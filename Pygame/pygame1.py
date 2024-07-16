@@ -16,7 +16,7 @@ while running:
     clock.tick(60)
 # 종료
 pygame.quit()
-
+# ----------------------------------------------------------
 import pygame
 # 초기화
 pygame.init()
