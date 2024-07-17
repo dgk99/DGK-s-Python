@@ -1,0 +1,2 @@
+num = 1 / 3
+print(num)
