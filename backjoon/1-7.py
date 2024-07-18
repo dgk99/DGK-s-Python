@@ -1,4 +1,2 @@
-id = "joonha"
+id = input("") + "??!"
 print(id)
-surprised = id + "??!"
-print(surprised)

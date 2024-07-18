@@ -1,2 +1,3 @@
-num = 3 - 2
-print(num)
+a, b = map(int, input().split(" "))
+
+print(a - b)

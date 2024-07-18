@@ -1,2 +1,3 @@
-num = 1 / 3
-print(num)
+a, b = map(int, input().split(" "))
+
+print(a / b)
