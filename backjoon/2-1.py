@@ -5,7 +5,7 @@
 # a가 b보다 작은 경우 < 출력
 # a와 b가 같은 경우 == 출력
 
-num = input("두 정수 입력: ")
+num = input()
 num = list(map(int, num.split()))
 
 if num[0] > num[1]:

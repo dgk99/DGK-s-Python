@@ -1,5 +1,5 @@
-x = int(input("x 좌표: "))
-y = int(input("y 좌표: "))
+x = int(input())
+y = int(input())
 
 if x >= 0 and y >= 0:
     print(1)

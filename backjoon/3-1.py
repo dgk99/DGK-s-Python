@@ -1,4 +1,4 @@
-n = int(input("N 입력: "))
+n = int(input())
 
-for num in range(2, 10):
+for num in range(1, 10):
     print(f"{n} * {num} = {n * num}")

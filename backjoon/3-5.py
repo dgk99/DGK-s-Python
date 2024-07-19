@@ -1,4 +1,4 @@
-n = int(input("정수(4 <= N <= 1000): "))
+n = int(input())
 
 long_count = 0
 

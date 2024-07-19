@@ -1,5 +1,4 @@
-dice = input("주사위 눈: ")
-dice_list = list(map(int, dice.split(" ")))
+dice_list = list(map(int, input().split(" ")))
 
 max_num = 0
 

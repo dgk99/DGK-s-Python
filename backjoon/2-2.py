@@ -1,4 +1,4 @@
-test = 100
+test = int(input())
 
 if test >= 90:
     print("A")

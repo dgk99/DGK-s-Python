@@ -33,3 +33,18 @@ while running:
     pygame.display.flip()
 # 종료
 pygame.quit()
+#----------------------------------------------------------------------
+import pygame
+# 초기화
+pygame.init()
+
+screen = pygame.display.set_mode((800, 600))
+running = True
+# 이벤트 처리
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+# 종료
+pygame.quit()

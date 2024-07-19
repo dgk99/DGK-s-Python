@@ -1,4 +1,4 @@
-n = int(input("정수 입력: "))
+n = int(input())
 
 sum = 0
 

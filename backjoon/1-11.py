@@ -1,4 +1,4 @@
-num = input("세 수를 입력하세요: ")
+num = input()
 
 num = num.split(" ")
 
