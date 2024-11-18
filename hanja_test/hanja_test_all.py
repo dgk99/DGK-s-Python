@@ -33,7 +33,7 @@ screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Hanja Quiz")
 
 # 폰트 설정
-font_path = "NotoSansCJK-wght-400-900.ttf.ttc"
+font_path = "NotoSerifCJKjp-Regular.otf"
 font = pygame.font.Font(font_path, 40)
 small_font = pygame.font.Font(font_path, 25)
 

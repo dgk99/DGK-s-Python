@@ -46,10 +46,10 @@ red = (255, 0, 0)
 
 # 문제 로드 함수
 def load_new_question(mode="all", num_questions=20):
-    if mode == "test":
+    if mode == "test":  # 20개 테스트 모드
         selected_questions = random.sample(questions, min(num_questions, len(questions)))
-    else:
-        selected_questions = questions
+    else:  # 모든 한자 외우기 모드
+        selected_questions = random.sample(questions, len(questions))  # 모든 문제를 랜덤으로 정렬
     return selected_questions
 
 # 게임 데이터 초기화 함수
@@ -91,6 +91,7 @@ padding = 10
 kanji_start_y = 100
 kanji_end_y = kanji_start_y + (len(all_kanji) // columns + 1) * (kanji_button_height + padding)
 answer_start_y = kanji_end_y + 50
+
 
 # 게임 루프
 running = True
@@ -142,15 +143,21 @@ while running:
         meaning_text = font.render(f"뜻: {current_question['meaning']}", True, black)
         screen.blit(meaning_text, (screen_width // 2 - meaning_text.get_width() // 2, 20))
 
-        # 문제 번호 출력 (현재 문제 / 총 문제)
+        # 문제 번호 출력
         question_counter_text = small_font.render(f"문제: {question_index} / {total_questions}", True, black)
         screen.blit(question_counter_text, (screen_width - question_counter_text.get_width() - 20, 20))
 
-        # 홈 버튼 출력
+        # 홈 버튼
         home_button_rect = pygame.Rect(20, 20, 100, 50)
         pygame.draw.rect(screen, gray, home_button_rect)
         home_text = small_font.render("홈", True, black)
         screen.blit(home_text, (home_button_rect.x + 25, home_button_rect.y + 15))
+
+        # Pass 버튼
+        pass_button_rect = pygame.Rect(screen_width - 120, screen_height - 70, 100, 50)
+        pygame.draw.rect(screen, gray, pass_button_rect)
+        pass_text = small_font.render("Pass", True, black)
+        screen.blit(pass_text, (pass_button_rect.x + 25, pass_button_rect.y + 15))
 
         # 보기 출력
         buttons = []
@@ -179,34 +186,35 @@ while running:
                 blank_text = small_font.render(char, True, black)
                 screen.blit(blank_text, (blank_position[0] + 10, blank_position[1] + 10))
 
-
         # 피드백 표시
         if show_feedback:
-            feedback_text = small_font.render(feedback, True, green if feedback == "정답입니다!" else red)
+            feedback_text = small_font.render(feedback, True, green if feedback in ["정답입니다!", "Pass"] else red)
             screen.blit(feedback_text, (screen_width // 2 - feedback_text.get_width() // 2, answer_start_y + 80))
-            if feedback == "정답입니다!":
-                # 히라가나만 표시
-                hiragana_text = font.render(current_question["hiragana"], True, black)
-                screen.blit(hiragana_text, (screen_width // 2 - hiragana_text.get_width() // 2, answer_start_y - 50))
+            
+            if feedback in ["정답입니다!", "Pass"]:  # 정답 또는 Pass일 때
+                # 히라가나와 한자를 나란히 출력
+                combined_text = f"{current_question['kanji']} ({current_question['hiragana']})"
+                combined_text_rendered = font.render(combined_text, True, black)
+                screen.blit(combined_text_rendered, (screen_width // 2 - combined_text_rendered.get_width() // 2, answer_start_y - 50))
 
             # 타이머로 피드백을 사라지게 하거나 다음 문제로 전환
-            if pygame.time.get_ticks() - show_feedback_timer > 1000:  # 3초 후 피드백 제거
-                if feedback == "정답입니다!":
+            if pygame.time.get_ticks() - show_feedback_timer > 3000:  # 3초 후
+                if feedback in ["정답입니다!", "Pass"]:
                     question_index += 1
                     if question_index > total_questions:
-                        state = STATE_RESULT  # 모든 문제를 푼 경우 결과 화면으로 전환
+                        state = STATE_RESULT
                     else:
-                        current_question, correct_kanji, display_text = load_new_question_individual(current_questions[question_index - 1])
+                        current_question, correct_kanji, display_text = load_new_question_individual(
+                            current_questions[question_index - 1]
+                        )
                         user_answer = [""] * len(correct_kanji)
                     mistake_made = False
                 else:
-                    incorrect_count += 1  # 틀린 경우 오답 카운트 증가
-                    # 중복 방지 추가
-                    if current_question not in incorrect_questions:
-                        incorrect_questions.append(current_question)  # 틀린 문제 저장
+                    incorrect_count += 1
+                    if current_question not in incorrect_questions:  # 중복 방지
+                        incorrect_questions.append(current_question)
                 feedback = ""
                 show_feedback = False
-
 
         # 이벤트 처리
         for event in pygame.event.get():
@@ -218,6 +226,13 @@ while running:
                 if home_button_rect.collidepoint(x, y):
                     state = STATE_MENU
 
+                # Pass 버튼 클릭 확인
+                elif pass_button_rect.collidepoint(x, y):
+                    feedback = "Pass"
+                    show_feedback_timer = pygame.time.get_ticks()
+                    show_feedback = True
+
+                # 보기 및 정답 처리
                 for button in buttons:
                     button_position, value = button
                     if (
@@ -241,38 +256,6 @@ while running:
                             show_feedback_timer = pygame.time.get_ticks()
                             show_feedback = True
                             mistake_made = True  # 틀린 한자를 클릭했음을 표시
-
-    elif state == STATE_RESULT:
-        # 결과 화면 출력
-        result_text = font.render("결과 화면", True, black)
-        screen.blit(result_text, (screen_width // 2 - result_text.get_width() // 2, 100))
-
-        # 정답 및 오답 카운트 출력
-        score_text = small_font.render(f"정답: {correct_count} / 오답: {incorrect_count}", True, black)
-        screen.blit(score_text, (screen_width // 2 - score_text.get_width() // 2, 200))
-
-        # 틀린 문제들 출력
-        y_offset = 300
-        for incorrect in incorrect_questions:
-            incorrect_text = small_font.render(f"뜻: {incorrect['meaning']}, 한자: {incorrect['kanji']}, 히라가나: {incorrect['hiragana']}", True, red)
-            screen.blit(incorrect_text, (50, y_offset))
-            y_offset += 40
-
-        # 홈 버튼 출력
-        home_button_rect = pygame.Rect(20, 20, 100, 50)
-        pygame.draw.rect(screen, gray, home_button_rect)
-        home_text = small_font.render("홈", True, black)
-        screen.blit(home_text, (home_button_rect.x + 25, home_button_rect.y + 15))
-
-        # 이벤트 처리 (홈 버튼 클릭 확인)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                x, y = pygame.mouse.get_pos()
-                if home_button_rect.collidepoint(x, y):
-                    state = STATE_MENU
-
     pygame.display.flip()
 
 pygame.quit()
