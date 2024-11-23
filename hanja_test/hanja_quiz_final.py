@@ -21,7 +21,7 @@ def load_questions_from_csv(file_path):
     return questions, sorted(all_kanji)  # 고유 한자 정렬 후 반환
 
 # 파일 경로
-csv_file_path = "hanja_data.csv"
+csv_file_path = "11.28_hanja_dataset.csv"
 questions, all_kanji = load_questions_from_csv(csv_file_path)
 
 # 파이게임 초기화
@@ -247,7 +247,7 @@ while running:
                                     user_answer[i] = value
                                     break
                             # 정답 확인
-                            if "".join(user_answer) == "".join(correct_kanji):  # 한자만 비교
+                            if "".join(user_answer) == "".join(correct_kanji):
                                 feedback = "정답입니다!"
                                 show_feedback_timer = pygame.time.get_ticks()
                                 show_feedback = True
